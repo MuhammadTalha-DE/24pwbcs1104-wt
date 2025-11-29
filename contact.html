@@ -4,7 +4,392 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - UET Peshawar</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --success-color: #38a169;
+            --light-color: #f7fafc;
+            --text-color: #2d3748;
+            --light-text: #718096;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .header-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-text h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            background-color: var(--secondary-color);
+            padding: 0.8rem 0;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 2rem 0;
+        }
+
+        .contact-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Info Styles */
+        .contact-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            height: fit-content;
+        }
+
+        .contact-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .contact-detail {
+            margin-bottom: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .contact-detail h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-detail h3 i {
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            width: 1.5rem;
+        }
+
+        .contact-detail p {
+            color: var(--light-text);
+        }
+
+        /* Map Styles */
+        .map-container {
+            margin-top: 2rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Contact Form Styles */
+        .contact-form-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-form-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin-top: 0.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: var(--box-shadow);
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #2c5aa0;
+            transform: translateY(-2px);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .success-message i {
+            color: var(--success-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-message h3 {
+            color: var(--success-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Staff Section */
+        .staff-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .staff-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .staff-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .staff-icon {
+            background-color: var(--accent-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .staff-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .staff-card p {
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .staff-card .email {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #4a5568;
+            font-size: 0.9rem;
+            color: #cbd5e0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -42,7 +427,7 @@
                     <div class="contact-info">
                         <h2>Department Information</h2>
                         <div class="contact-detail">
-                            <h3>Address</h3>
+                            <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
                             <p>Department of Computer Science<br>
                             University of Engineering & Technology<br>
                             Peshawar, Khyber Pakhtunkhwa<br>
@@ -50,43 +435,49 @@
                         </div>
                         
                         <div class="contact-detail">
-                            <h3>Email</h3>
+                            <h3><i class="fas fa-envelope"></i> Email</h3>
                             <p>csdepartment@uetpeshawar.edu.pk</p>
                         </div>
                         
                         <div class="contact-detail">
-                            <h3>Phone</h3>
+                            <h3><i class="fas fa-phone"></i> Phone</h3>
                             <p>+92 91 921 6789</p>
                         </div>
                         
                         <div class="contact-detail">
-                            <h3>Office Hours</h3>
+                            <h3><i class="fas fa-clock"></i> Office Hours</h3>
                             <p>Monday - Friday: 8:00 AM - 4:00 PM<br>
                             Saturday: 9:00 AM - 1:00 PM</p>
+                        </div>
+                        
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i> UET Peshawar Campus Map
+                            </div>
                         </div>
                     </div>
                     
                     <div class="contact-form-container">
                         <h2>Send us a Message</h2>
-                        <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST" id="contactForm">
+                        <form class="contact-form" id="contactForm">
                             <div class="form-group">
                                 <label for="name">Your Name *</label>
-                                <input type="text" id="name" name="name" required>
+                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
                             </div>
                             
                             <div class="form-group">
                                 <label for="email">Your Email *</label>
-                                <input type="email" id="email" name="email" required>
+                                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                             </div>
                             
                             <div class="form-group">
                                 <label for="subject">Subject *</label>
-                                <input type="text" id="subject" name="subject" required>
+                                <input type="text" id="subject" name="subject" required placeholder="What is this regarding?">
                             </div>
                             
                             <div class="form-group">
                                 <label for="message">Your Message *</label>
-                                <textarea id="message" name="message" rows="6" required></textarea>
+                                <textarea id="message" name="message" rows="6" required placeholder="Please provide details of your inquiry..."></textarea>
                             </div>
                             
                             <div class="form-group">
@@ -97,7 +488,45 @@
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Send Message</button>
+                            
+                            <div class="success-message" id="successMessage">
+                                <i class="fas fa-check-circle"></i>
+                                <h3>Message Sent Successfully!</h3>
+                                <p>Thank you for contacting us. We will get back to you soon.</p>
+                            </div>
                         </form>
+                    </div>
+                </div>
+                
+                <div class="staff-section">
+                    <h2>Key Department Contacts</h2>
+                    <div class="staff-grid">
+                        <div class="staff-card">
+                            <div class="staff-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Dr. Muhammad Ali</h3>
+                            <p>Department Chair</p>
+                            <p class="email">m.ali@uetpeshawar.edu.pk</p>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3>Mr. Mohammad</h3>
+                            <p>Web Technologies Instructor</p>
+                            <p class="email">mohammad@uetpeshawar.edu.pk</p>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3>Student Affairs</h3>
+                            <p>Academic Guidance & Support</p>
+                            <p class="email">student.affairs@uetpeshawar.edu.pk</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -129,13 +558,18 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Formspree will handle the submission
-            // You can add additional validation here if needed
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
             
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset form after 5 seconds
+            setTimeout(() => {
+                this.reset();
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
         });
     </script>
 </body>
-
 </html>
