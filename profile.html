@@ -4,7 +4,287 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile - UET Peshawar</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --light-color: #f7fafc;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .header-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-text h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            background-color: var(--secondary-color);
+            padding: 0.8rem 0;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            background-color: var(--accent-color);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 2rem 0;
+        }
+
+        .profile-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .profile-image-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            height: fit-content;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .profile-image-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .bio-section, .contact-info, .academic-info, .skills-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 i {
+            color: var(--accent-color);
+        }
+
+        .contact-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .academic-info ul {
+            list-style: none;
+        }
+
+        .academic-info li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .academic-info li:before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Skills Categories */
+        .skills-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background-color: var(--light-color);
+            padding: 1.2rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .skill-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "▸";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #4a5568;
+            font-size: 0.9rem;
+            color: #cbd5e0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .main-nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -39,7 +319,6 @@
                 
                 <div class="profile-content">
                     <div class="profile-image-section">
-                        
                         <img src="profile.jpg" alt="Profile Picture" class="profile-img">
                         <h2>Muhammad MuhammadTalha-DE</h2>
                         <p class="title">BS Computer Science Student</p>
@@ -47,12 +326,12 @@
                     
                     <div class="profile-details">
                         <div class="bio-section">
-                            <h3>About Me</h3>
-                            <p>I am a dedicated 4th semester Computer Science student at the University of Engineering and Technology, Peshawar. Passionate about web technologies, artificial intelligence (Machine Learning), and software development. I aim to leverage my technical skills to create innovative solutions for real-world Computiinig problems.</p>
+                            <h3><i class="fas fa-user"></i> About Me</h3>
+                            <p>I am a dedicated 4th semester Computer Science student at the University of Engineering and Technology, Peshawar. Passionate about web technologies, artificial intelligence (Machine Learning), and software development. I aim to leverage my technical skills to create innovative solutions for real-world Computing problems.</p>
                         </div>
                         
                         <div class="contact-info">
-                            <h3>Contact Information</h3>
+                            <h3><i class="fas fa-address-card"></i> Contact Information</h3>
                             <div class="contact-details">
                                 <p><strong>Email:</strong> 24pwbcs1104@uetpeshawar.edu.pk</p>
                                 <p><strong>Registration No:</strong> 24pwbcs1104</p>
@@ -63,7 +342,7 @@
                         </div>
                         
                         <div class="academic-info">
-                            <h3>Academic Background</h3>
+                            <h3><i class="fas fa-graduation-cap"></i> Academic Background</h3>
                             <ul>
                                 <li><strong>Current Program:</strong> BS Computer Science</li>
                                 <li><strong>Semester:</strong> 4th Semester - Section B</li>
@@ -73,69 +352,119 @@
                         </div>
                         
                         <div class="skills-section">
-                            <h3>Technical Skills</h3>
-                            <div class="skills">
-                                <span class="skill-tag">HTML5</span>
-                                <span class="skill-tag">CSS3</span>
-                                <span class="skill-tag">JavaScript</span>
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">Java</span>
-                                <span class="skill-tag">C++</span>
-                                <span class="skill-tag">Git</span>
-                                <span class="skill-tag">SQL</span>
-                                <span class="skill-tag">React</span>
-                                <span class="skill-tag">Node.js</span>
-                                <span class="skill-tag">MongoDB</span>
-                                <span class="skill-tag">Django</span>
-                                <span class="skill-tag">REST APIs</span>
-                                <span class="skill-tag">Linux</span>
-                                <span class="skill-tag">Agile Methodologies</span>
-                                <span class="skill-tag">Problem Solving</span>
-                                <span class="skill-tag">Team Collaboration</span>
-                                <span class="skill-tag">Critical Thinking</span>
-                                <span class="skill-tag">Communication</span>
-                                <span class="skill-tag">Time Management</span>
-                                <span class="skill-tag">ETL </span>
-                                <span class="skill-tag">Data Warehousing</span>
-                                <span class="skill-tag">Data Modeling</span>    
-                                <span class="skill-tag">Big Data Technologies</span>
-                                <span class="skill-tag">Data Visualization</span>   
-                                <span class="skill-tag">Machine Learning</span>
-                                <span class="skill-tag">Statistical Analysis</span>
-                                <span class="skill-tag">Data Cleaning</span>
-                                <span class="skill-tag">Data Mining</span>
-                                <span class="skill-tag">Python for Data Science</span>
-                                <span class="skill-tag">R Programming</span>
-                                <span class="skill-tag">SQL for Data Analysis</span>
-                                <span class="skill-tag">Excel for Data Analysis</span>
-                                <span class="skill-tag">Tableau</span>
-                                <span class="skill-tag">Power BI</span>
-                                <span class="skill-tag">Hadoop</span>
-                                <span class="skill-tag">Spark</span>
-                                <span class="skill-tag">NoSQL Databases</span>
-                                <span class="skill-tag">Data Governance</span>
-                                <span class="skill-tag">Data Ethics</span>
-                                <span class="skill-tag">Data Storytelling</span>
-                                <span class="skill-tag">Data-Driven Decision Making</span>
-                                <span class="skill-tag">Data Science Libraries (Pandas, NumPy, Scikit-learn)</span>
-                                <span class="skill-tag">Jupyter Notebooks</span>
-                                <span class="skill-tag">Google Colab</span>
-                                <span class="skill-tag">Google cloud </span>
-                                <span class="skill-tag">AWS</span>
-                                <span class="skill-tag">Azure</span>    
-                                <span class="skill-tag">ELT and ETL </span>
-                                <span class="skill-tag">Data Pipelines</span>
-                                <span class="skill-tag">Data Integration</span>
-                                <span class="skill-tag">Machine Learning</span>
-                                <span class="skill-tag">Deep Learning</span?
-                                <span class="skill-tag">Neural NetWork</span>
-                                <span class="skill-tag">Big Data_Engineering</span>
-                                <span class="skill-tag">BlockChain Technology</span>
+                            <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                            <div class="skills-categories">
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-laptop-code"></i> Web Development</h4>
+                                    <ul>
+                                        <li>HTML5</li>
+                                        <li>CSS3</li>
+                                        <li>JavaScript</li>
+                                        <li>React</li>
+                                        <li>Node.js</li>
+                                        <li>REST APIs</li>
+                                    </ul>
+                                </div>
                                 
-    class="skill-tag">Data Quality</span>
-                                <span class="skill-tag">DataOps</span>
-                                <span class="skill-tag">Version Control (Git)</span>
-                            
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-database"></i> Databases</h4>
+                                    <ul>
+                                        <li>SQL</li>
+                                        <li>MongoDB</li>
+                                        <li>NoSQL Databases</li>
+                                        <li>Data Warehousing</li>
+                                        <li>Data Modeling</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-chart-bar"></i> Data Science & Analytics</h4>
+                                    <ul>
+                                        <li>Python for Data Science</li>
+                                        <li>R Programming</li>
+                                        <li>SQL for Data Analysis</li>
+                                        <li>Excel for Data Analysis</li>
+                                        <li>Statistical Analysis</li>
+                                        <li>Data Mining</li>
+                                        <li>Data Visualization</li>
+                                        <li>Data Storytelling</li>
+                                        <li>Data-Driven Decision Making</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-brain"></i> AI & Machine Learning</h4>
+                                    <ul>
+                                        <li>Machine Learning</li>
+                                        <li>Deep Learning</li>
+                                        <li>Neural Networks</li>
+                                        <li>Data Science Libraries (Pandas, NumPy, Scikit-learn)</li>
+                                        <li>Jupyter Notebooks</li>
+                                        <li>Google Colab</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-cloud"></i> Cloud & Big Data</h4>
+                                    <ul>
+                                        <li>Google Cloud</li>
+                                        <li>AWS</li>
+                                        <li>Azure</li>
+                                        <li>Big Data Technologies</li>
+                                        <li>Hadoop</li>
+                                        <li>Spark</li>
+                                        <li>Big Data Engineering</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-cogs"></i> Data Engineering</h4>
+                                    <ul>
+                                        <li>ETL</li>
+                                        <li>ELT and ETL</li>
+                                        <li>Data Pipelines</li>
+                                        <li>Data Integration</li>
+                                        <li>Data Quality</li>
+                                        <li>DataOps</li>
+                                        <li>Data Governance</li>
+                                        <li>Data Ethics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-tools"></i> Programming Languages & Tools</h4>
+                                    <ul>
+                                        <li>Python</li>
+                                        <li>Java</li>
+                                        <li>C++</li>
+                                        <li>Git</li>
+                                        <li>Django</li>
+                                        <li>Linux</li>
+                                        <li>Version Control (Git)</li>
+                                        <li>BlockChain Technology</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-chart-pie"></i> Visualization Tools</h4>
+                                    <ul>
+                                        <li>Tableau</li>
+                                        <li>Power BI</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h4><i class="fas fa-users"></i> Professional Skills</h4>
+                                    <ul>
+                                        <li>Agile Methodologies</li>
+                                        <li>Problem Solving</li>
+                                        <li>Team Collaboration</li>
+                                        <li>Critical Thinking</li>
+                                        <li>Communication</li>
+                                        <li>Time Management</li>
+                                        <li>Analytical thinking</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -165,6 +494,4 @@
         </div>
     </footer>
 </body>
-
 </html>
-
